@@ -1,6 +1,7 @@
 ﻿namespace OnlineMarket.Server.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using OnlineMarket.Server.Services;
     using System.Threading.Tasks;
 
     [ApiController]
@@ -8,6 +9,12 @@
     public class AccountsController : ControllerBase
     {
         private const string ProlifeRouteTemplate = "Profile";
+        private readonly SecurityService _securityService;
+
+        public AccountsController(SecurityService securityService)
+        {
+            this._securityService = securityService;
+        }
 
         [HttpPost(ControllersConstants.ActionRoute)]
         public async Task<IActionResult> Register()
@@ -24,7 +31,7 @@
         [HttpGet(ProlifeRouteTemplate)]
         public async Task<IActionResult> GetProfile()
         {
-            return this.Ok();
+            return this.Ok(this._securityService.GetConfigValues());
         }
 
         [HttpPut(ProlifeRouteTemplate)]

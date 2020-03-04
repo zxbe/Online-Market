@@ -37,5 +37,15 @@
                 IssuerSigningKey = Key
             };
         }
+
+        public string GetConfigValues()
+        {
+            var Issuer = _configuration[JwtIssuer];
+            var Audience = _configuration[JwtAudience];
+            var KeyString = _configuration[JwtSecurityKey];
+            var ConnectionString = _configuration.GetConnectionString("DefaultConnection");
+
+            return $"{Issuer} __ {Audience} __ {KeyString} __ {ConnectionString}";
+        }
     }
 }

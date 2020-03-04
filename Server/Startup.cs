@@ -51,6 +51,8 @@ namespace OnlineMarket.Server
                 opt.SaveToken = true;
                 opt.TokenValidationParameters = SecurityService.GetTokenValidationParameters(_configuration);
             });
+
+            services.AddSingleton<SecurityService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
