@@ -17,6 +17,8 @@ namespace OnlineMarket.Server
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
                     new[] { "application/octet-stream" });
             });
+
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -37,6 +39,7 @@ namespace OnlineMarket.Server
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
                 endpoints.MapFallbackToClientSideBlazor<Client.Program>("index.html");
             });
         }
