@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Client\OnlineMarket.Client.csproj" />
+    <ProjectReference Include="..\Server.Services\OnlineMarket.Server.Services.csproj" />
     <ProjectReference Include="..\Shared\OnlineMarket.Shared.csproj" />
   </ItemGroup>
 

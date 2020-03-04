@@ -7,6 +7,7 @@ namespace OnlineMarket.Server
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using OnlineMarket.Server.Services;
     using System.Linq;
 
     public class Startup
@@ -35,10 +36,8 @@ namespace OnlineMarket.Server
             {
                 opt.RequireHttpsMetadata = false;
                 opt.SaveToken = true;
-                opt.TokenValidationParameters => SecurityService.GetTokenValidationParameters(IConfiguration configuration);
+                opt.TokenValidationParameters = SecurityService.GetTokenValidationParameters(_configuration);
             });
-
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -56,8 +55,8 @@ namespace OnlineMarket.Server
 
             app.UseRouting();
 
-            //app.UseAuthentication();
-            //app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
