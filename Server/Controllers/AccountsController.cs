@@ -31,7 +31,7 @@
         [HttpGet(ProlifeRouteTemplate)]
         public async Task<IActionResult> GetProfile()
         {
-            return this.Ok(this._securityService.GetConfigValues());
+            return this.Ok();
         }
 
         [HttpPut(ProlifeRouteTemplate)]
