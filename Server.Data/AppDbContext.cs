@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Server.Data
+﻿namespace OnlineMarket.Server.Data
 {
     public class AppDbContext
     {

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineMarket.Shared", "Shar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.Server.Services", "Server.Services\OnlineMarket.Server.Services.csproj", "{00607F7F-8F26-493A-B604-5D6AE07DC95D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server.Data", "Server.Data\Server.Data.csproj", "{E307A45E-4097-478D-9FBA-FC6EBE0D59EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.Server.Data", "Server.Data\OnlineMarket.Server.Data.csproj", "{E307A45E-4097-478D-9FBA-FC6EBE0D59EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
