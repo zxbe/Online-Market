@@ -7,10 +7,17 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Blazor.Server" Version="3.2.0-preview1.20073.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Client\OnlineMarket.Client.csproj" />
+    <ProjectReference Include="..\Server.Data\OnlineMarket.Server.Data.csproj" />
     <ProjectReference Include="..\Server.Services\OnlineMarket.Server.Services.csproj" />
     <ProjectReference Include="..\Shared\OnlineMarket.Shared.csproj" />
   </ItemGroup>

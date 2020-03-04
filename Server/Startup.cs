@@ -3,15 +3,20 @@ namespace OnlineMarket.Server
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.ResponseCompression;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using OnlineMarket.Server.Data;
     using OnlineMarket.Server.Services;
     using System.Linq;
 
     public class Startup
     {
+        private const string DefaultConnectionString = "DefaultConnection";
+
         private readonly IConfiguration _configuration;
 
         public Startup(IConfiguration configuration)
@@ -27,6 +32,14 @@ namespace OnlineMarket.Server
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
                     new[] { "application/octet-stream" });
             });
+
+            services.AddDbContext<AppDbContext>(opt =>
+            {
+                opt.UseSqlServer(_configuration.GetConnectionString(DefaultConnectionString));
+            });
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
 
             services.AddAuthentication(opt =>
             {
