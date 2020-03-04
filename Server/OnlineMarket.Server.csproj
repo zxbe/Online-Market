@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -13,10 +13,6 @@
     <ProjectReference Include="..\Client\OnlineMarket.Client.csproj" />
     <ProjectReference Include="..\Server.Services\OnlineMarket.Server.Services.csproj" />
     <ProjectReference Include="..\Shared\OnlineMarket.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
