@@ -3,6 +3,8 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.Configuration;
     using Microsoft.IdentityModel.Tokens;
+    using System;
+    using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Text;
 
@@ -50,6 +52,21 @@
                     ?user.PhoneNumber
                     :string.Empty)
             };
+        }
+
+        public SecurityToken GenerateJWT(IdentityUser user)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration[JwtSecurityKey]));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                _configuration[JwtIssuer],
+              _configuration[JwtAudience],
+              this.GetClaims(user),
+              expires: DateTime.Now.AddHours(int.Parse(_configuration[JwtExpiry])),
+              signingCredentials: credentials);
+
+            return token;
         }
     }
 }
