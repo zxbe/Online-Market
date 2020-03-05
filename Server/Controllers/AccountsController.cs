@@ -1,5 +1,6 @@
 ﻿namespace OnlineMarket.Server.Controllers
 {
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using OnlineMarket.Server.Services;
     using OnlineMarket.Shared.BindingModels.Accounts;
@@ -14,10 +15,13 @@
     {
         private const string ProlifeRouteTemplate = "Profile";
         private readonly SecurityService _securityService;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public AccountsController(SecurityService securityService)
+        public AccountsController(SecurityService securityService,
+            UserManager<IdentityUser> userManager)
         {
             this._securityService = securityService;
+            this._userManager = userManager;
         }
 
         [HttpPost(ControllersConstants.ActionRoute)]
@@ -32,12 +36,27 @@
                 });
             }
 
-            //User Registration Logic
+            var user = new IdentityUser()
+            {
+                UserName = registerModel.Username,
+                Email = registerModel.Email
+            };
 
-            return this.Ok(new CreateResult<ClaimsIdentity>()
+            var res = await this._userManager.CreateAsync(user, registerModel.Password);
+
+            if (!res.Succeeded)
+            {
+                return this.BadRequest(new CreateResult<Claim[]>()
+                {
+                    IsSuccessful = false,
+                    Errors = res.Errors.Select(e => $"{e.Code} - {e.Description}")
+                });
+            }
+
+            return this.Ok(new CreateResult<Claim[]>()
             {
                 IsSuccessful = true,
-                //CreatedObject = this._securityService.GetClaims()
+                CreatedObject = this._securityService.GetClaims(user)
             });
         }
 

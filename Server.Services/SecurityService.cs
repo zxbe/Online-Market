@@ -1,7 +1,9 @@
 ﻿namespace OnlineMarket.Server.Services
 {
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.Configuration;
     using Microsoft.IdentityModel.Tokens;
+    using System.Security.Claims;
     using System.Text;
 
     public class SecurityService
@@ -38,14 +40,16 @@
             };
         }
 
-        public string GetConfigValues()
+        public Claim[] GetClaims(IdentityUser user)
         {
-            var Issuer = _configuration[JwtIssuer];
-            var Audience = _configuration[JwtAudience];
-            var KeyString = _configuration[JwtSecurityKey];
-            var ConnectionString = _configuration.GetConnectionString("DefaultConnection");
-
-            return $"{Issuer} __ {Audience} __ {KeyString} __ {ConnectionString}";
+            return new Claim[]
+            {
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.MobilePhone, user.PhoneNumber != null
+                    ?user.PhoneNumber
+                    :string.Empty)
+            };
         }
     }
 }
