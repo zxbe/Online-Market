@@ -2,6 +2,10 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using OnlineMarket.Server.Services;
+    using OnlineMarket.Shared.BindingModels.Accounts;
+    using OnlineMarket.Shared.Results;
+    using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     [ApiController]
@@ -17,9 +21,24 @@
         }
 
         [HttpPost(ControllersConstants.ActionRoute)]
-        public async Task<IActionResult> Register()
+        public async Task<IActionResult> Register([FromBody] RegisterModel registerModel)
         {
-            return this.Ok();
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest(new CreateResult<Claim[]>()
+                {
+                    IsSuccessful = false,
+                    Errors = this.ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage)
+                });
+            }
+
+            //User Registration Logic
+
+            return this.Ok(new CreateResult<ClaimsIdentity>()
+            {
+                IsSuccessful = true,
+                //CreatedObject = this._securityService.GetClaims()
+            });
         }
 
         [HttpPost(ControllersConstants.ActionRoute)]
