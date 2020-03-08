@@ -5,6 +5,7 @@
     using OnlineMarket.Server.Services;
     using OnlineMarket.Shared.BindingModels.Accounts;
     using OnlineMarket.Shared.Results;
+    using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
     using System.Linq;
     using System.Security.Claims;
@@ -57,7 +58,7 @@
                 });
             }
 
-            return this.Ok(new CreateResult<Claim[]>()
+            return this.Ok(new CreateResult<IEnumerable<Claim>>
             {
                 IsSuccessful = true,
                 CreatedObject = this._securityService.GetClaims(user)
