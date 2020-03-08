@@ -115,8 +115,8 @@
             return this.Ok(new LoginResult()
             {
                 IsSuccessful = true,
-                Token = new JwtSecurityTokenHandler().WriteToken(token)
-            });
+                Token = _securityService.GetTokenString(user)
+            }) ;
         }
 
         [HttpGet(ProlifeRouteTemplate)]

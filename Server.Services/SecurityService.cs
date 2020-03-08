@@ -75,5 +75,12 @@
 
             return token;
         }
+
+        public string GetTokenString(IdentityUser user) 
+        {
+            var token = this.GenerateJWT(user);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
     }
 }
