@@ -127,13 +127,13 @@
             var user = await this._userManager.FindByNameAsync(this.User.Identity.Name);
             var roleClaimsStrings = await this._userManager.GetRolesAsync(user);
             var roleClaims = roleClaimsStrings
-                .Select(s => 
+                .Select(s =>
                     new Claim(ClaimTypes.Role, s));
 
             var claims = this._securityService
                 .GetClaims(user, roleClaims)
                 .Select(c => $"{c.Type} - {c.Value}");
-            
+
             return this.Ok(claims);
         }
 
@@ -141,6 +141,8 @@
         [HttpPut(ProlifeRouteTemplate)]
         public async Task<IActionResult> UpdateProfile()
         {
+            var user = await this._userManager.FindByNameAsync(this.User.Identity.Name);
+
             return this.Ok();
         }
 
@@ -149,6 +151,8 @@
         [HttpDelete(ProlifeRouteTemplate)]
         public async Task<IActionResult> DeleteProfile()
         {
+            var user = await this._userManager.FindByNameAsync(this.User.Identity.Name);
+
             return this.Ok();
         }
     }
