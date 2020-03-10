@@ -14,7 +14,7 @@
 
     [ApiController]
     [Route(ControllersConstants.ControllerRoute)]
-    public class AccountsController : ControllerBase 
+    public class AccountsController : ControllerBase
     {
         private const string ProlifeRouteTemplate = "Profile";
         private readonly SecurityService _securityService;
@@ -120,10 +120,21 @@
             });
         }
 
+        [Authorize]
         [HttpGet(ProlifeRouteTemplate)]
         public async Task<IActionResult> GetProfile()
         {
-            return this.Ok();
+            var user = await this._userManager.FindByNameAsync(this.User.Identity.Name);
+            var roleClaimsStrings = await this._userManager.GetRolesAsync(user);
+            var roleClaims = roleClaimsStrings
+                .Select(s => 
+                    new Claim(ClaimTypes.Role, s));
+
+            var claims = this._securityService
+                .GetClaims(user, roleClaims)
+                .Select(c => $"{c.Type} - {c.Value}");
+            
+            return this.Ok(claims);
         }
 
         [Authorize]
