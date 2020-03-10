@@ -2,18 +2,19 @@
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Authorization;
     using OnlineMarket.Server.Services;
     using OnlineMarket.Shared.BindingModels.Accounts;
     using OnlineMarket.Shared.Results;
     using System.Collections.Generic;
-    using System.IdentityModel.Tokens.Jwt;
     using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+
     [ApiController]
     [Route(ControllersConstants.ControllerRoute)]
-    public class AccountsController : ControllerBase
+    public class AccountsController : ControllerBase 
     {
         private const string ProlifeRouteTemplate = "Profile";
         private readonly SecurityService _securityService;
@@ -116,7 +117,7 @@
             {
                 IsSuccessful = true,
                 Token = _securityService.GetTokenString(user)
-            }) ;
+            });
         }
 
         [HttpGet(ProlifeRouteTemplate)]
@@ -125,12 +126,15 @@
             return this.Ok();
         }
 
+        [Authorize]
         [HttpPut(ProlifeRouteTemplate)]
         public async Task<IActionResult> UpdateProfile()
         {
             return this.Ok();
         }
 
+
+        [Authorize]
         [HttpDelete(ProlifeRouteTemplate)]
         public async Task<IActionResult> DeleteProfile()
         {
