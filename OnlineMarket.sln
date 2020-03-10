@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineMarket.Server.Data", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.Server.Data.Models", "Server.Data.Models\OnlineMarket.Server.Data.Models.csproj", "{DF07ED4C-DACA-4FB5-B884-F4F783E0D1D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.Server.Services.Tests", "Server.Services.Tests\OnlineMarket.Server.Services.Tests.csproj", "{7E277DCA-0C93-432C-BC3D-8EB5780458FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{DF07ED4C-DACA-4FB5-B884-F4F783E0D1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF07ED4C-DACA-4FB5-B884-F4F783E0D1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF07ED4C-DACA-4FB5-B884-F4F783E0D1D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E277DCA-0C93-432C-BC3D-8EB5780458FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E277DCA-0C93-432C-BC3D-8EB5780458FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E277DCA-0C93-432C-BC3D-8EB5780458FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E277DCA-0C93-432C-BC3D-8EB5780458FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
