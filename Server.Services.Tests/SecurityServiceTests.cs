@@ -6,19 +6,18 @@ namespace OnlineMarket.Server.Services.Tests
 
     public class SecurityServiceTests
     {
+        private Assembly ServicesAssembly { get; set; }
+
         [SetUp]
         public void Setup()
         {
+            this.ServicesAssembly = Assembly.Load("OnlineMarket.Server.Services");
         }
 
         [Test]
         public void SecurityServiceExists()
         {
-            Assert.Contains(
-                typeof(SecurityService),
-                Assembly
-                    .GetExecutingAssembly()
-                    .GetTypes());
+            Assert.Contains(typeof(SecurityService), this.ServicesAssembly.GetTypes());
         }
     }
 }
