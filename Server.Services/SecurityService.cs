@@ -13,10 +13,10 @@
     public class SecurityService
     {
         private const string JwtSection = "JWT";
-        private const string JwtSecurityKey = JwtSection + ":SecurityKey";
-        private const string JwtIssuer = JwtSection + ":Issuer";
-        private const string JwtAudience = JwtSection + ":Audience";
-        private const string JwtExpiry = JwtSection + ":Expiry";
+        public const string JwtSecurityKey = JwtSection + ":SecurityKey";
+        public const string JwtIssuer = JwtSection + ":Issuer";
+        public const string JwtAudience = JwtSection + ":Audience";
+        public const string JwtExpiry = JwtSection + ":Expiry";
 
         private readonly IConfiguration _configuration;
 
