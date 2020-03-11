@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineMarket.Server.Service
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineMarket.Server.Data", "Server.Data\OnlineMarket.Server.Data.csproj", "{E307A45E-4097-478D-9FBA-FC6EBE0D59EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.Server.Data.Models", "Server.Data.Models\OnlineMarket.Server.Data.Models.csproj", "{DF07ED4C-DACA-4FB5-B884-F4F783E0D1D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineMarket.Server.Data.Models", "Server.Data.Models\OnlineMarket.Server.Data.Models.csproj", "{DF07ED4C-DACA-4FB5-B884-F4F783E0D1D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket.Server.Services.Tests", "Server.Services.Tests\OnlineMarket.Server.Services.Tests.csproj", "{7E277DCA-0C93-432C-BC3D-8EB5780458FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineMarket.Server.Services.Tests", "Server.Services.Tests\OnlineMarket.Server.Services.Tests.csproj", "{7E277DCA-0C93-432C-BC3D-8EB5780458FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
